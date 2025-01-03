@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/model/Autoloader.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Repo/books_mvc/model/Autoloader.php';
 require_once ROOT_PATH . '/model/BooksService.php';
 
 class BooksController
@@ -47,7 +47,7 @@ class BooksController
     public function listBooks()
     {
         $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : null;
-        $contacts = $this->booksService->getAllBooks($orderby);
+        $books = $this->booksService->getAllBooks($orderby);
         include ROOT_PATH . '/view/books.php';
 
     }

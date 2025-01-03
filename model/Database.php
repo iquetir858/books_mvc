@@ -5,7 +5,7 @@
 //La tabla se define ne ContactsGateaway
 class Database
 {
-    private static $dbName = 'crud_mvc';
+    private static $dbName = 'books_mvc';
     private static $dbHost = 'localhost';
     private static $dbUsername = 'root';
     private static $dbUserPassword = 'root';
