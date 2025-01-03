@@ -6,6 +6,7 @@ and open the template in the editor.
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
     <title>Application error</title>
 </head>
 <body>

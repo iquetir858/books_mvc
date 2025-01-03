@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
     <title><?php echo $book->isbn; ?></title>
 </head>
 <body>

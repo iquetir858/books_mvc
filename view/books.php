@@ -3,33 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Info Books</title>
-    <style type="text/css">
-        table.books {
-            width: 100%;
-        }
-
-        table.books thead {
-            background-color: #eee;
-            text-align: left;
-
-        }
-
-        table.books thead th {
-            border: solid 1px #fff;
-            padding: 5px;
-        }
-
-        table.books tbody td {
-            border: solid 1px #eee;
-            padding: 5px;
-        }
-
-        a, a:hover, a:active, a:visited {
-            color: blue;
-            text-decoration: underline;
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
 </head>
 <body>
 <h3>CRUD OOP with MVC</h3>

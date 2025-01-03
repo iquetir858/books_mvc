@@ -5,7 +5,7 @@
     <title>
         <?php echo htmlentities($title); ?>
     </title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
 </head>
 <body>
 <h3>Add New Book</h3>
