@@ -29,8 +29,8 @@ if ($errors) {
     <label for="author">Author: </label><br>
     <input type="text" name="author" value="<?php echo htmlentities($author); ?>">
     <br>
-    <label for="publiser">Publisher: </label><br>
-    <textarea name="publiser"><?php echo htmlentities($publisher); ?></textarea>
+    <label for="publisher">Publisher: </label><br>
+    <textarea name="publisher"><?php echo htmlentities($publisher); ?></textarea>
     <br>
     <label for="pages">Pages: </label><br>
     <textarea name="pages"><?php echo htmlentities($pages); ?></textarea>

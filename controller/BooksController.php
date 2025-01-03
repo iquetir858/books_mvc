@@ -46,7 +46,7 @@ class BooksController
      */
     public function listBooks()
     {
-        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : null;
+        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
         $books = $this->booksService->getAllBooks($orderby);
         include ROOT_PATH . '/view/books.php';
 
@@ -56,10 +56,11 @@ class BooksController
     {
         $title = 'Add new book';
 
-        $name = '';
-        $phone = '';
-        $email = '';
-        $address = '';
+        $isbn = '';
+        $title = '';
+        $author = '';
+        $publisher = '';
+        $pages = '';
 
         $errors = array();
 
@@ -96,7 +97,7 @@ class BooksController
 
         $errors = array();
 
-        $book = $this->booksService->getBook($isbn);
+        $book = $this->booksService->getBook($id);
 
         if (isset($_POST['form-submitted'])) {
 
@@ -115,7 +116,7 @@ class BooksController
             }
         }
         // Include in the view of the edit form
-        include ROOT_PATH . 'view/book-form-edit.php';
+        include ROOT_PATH . '/view/book-form-edit.php';
     }
 
     public function deleteBook()
@@ -140,11 +141,11 @@ class BooksController
         }
         $book = $this->booksService->getBook($id);
 
-        include ROOT_PATH . 'view/book.php';
+        include ROOT_PATH . '/view/book.php';
     }
 
     public function showError($title, $message)
     {
-        include ROOT_PATH . 'view/error.php';
+        include ROOT_PATH . '/view/error.php';
     }
 }

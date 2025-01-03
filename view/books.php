@@ -16,12 +16,12 @@
 
         table.books thead th {
             border: solid 1px #fff;
-            padding: 3px;
+            padding: 5px;
         }
 
         table.books tbody td {
             border: solid 1px #eee;
-            padding: 3px;
+            padding: 5px;
         }
 
         a, a:hover, a:active, a:visited {
@@ -53,14 +53,14 @@
     <?php foreach ($books as $book) : ?>
         <tr>
             <td>
-                <a href="index.php?op=show&isbn=<?php echo $book->id; ?>"><?php echo htmlentities($book->isbn); ?></a>
+                <a href="index.php?op=show&id=<?php echo $book->id; ?>"><?php echo htmlentities($book->isbn); ?></a>
             </td>
             <td><?php echo htmlentities($book->title); ?></td>
             <td><?php echo htmlentities($book->author); ?></td>
             <td><?php echo htmlentities($book->publisher); ?></td>
             <td><?php echo htmlentities($book->pages); ?></td>
-            <td><a href="index.php?op=edit&isbn=<?php echo $book->id; ?>">edit</a></td>
-            <td><a href="index.php?op=delete&isbn=<?php echo $book->id; ?>"
+            <td><a href="index.php?op=edit&id=<?php echo $book->id; ?>">edit</a></td>
+            <td><a href="index.php?op=delete&id=<?php echo $book->id; ?>"
                    onclick="return confirm('Are you sure you want to delete?');">delete</a></td>
         </tr>
     <?php endforeach; ?>
