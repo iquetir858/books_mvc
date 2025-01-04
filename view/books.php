@@ -3,10 +3,49 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Info Books</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7b7111c316.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+            background-color: azure;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0; /*Elimina los espacios del footer*/
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border: 2px solid darkblue;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            border: 2px solid darkblue;
+        }
+
+        footer {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: darkblue;
+            font-size: 20px;
+            color: azure;
+        }
+    </style>
 </head>
 <body>
-<h3>CRUD OOP with MVC</h3>
+<header><h1>BOOKS MVC</h1></header>
 <div><a href="index.php?op=new">Add new book</a></div>
 <br>
 <table class="books" border="0" cellpadding="0" cellspacing="0">
@@ -17,8 +56,7 @@
         <th><a href="?orderby=author">Author</a></th>
         <th><a href="?orderby=publisher">Publisher</a></th>
         <th><a href="?orderby=pages">Pages</a></th>
-        <th>&nbsp</th>
-        <th>&nbsp</th>
+        <th>Actions</th>
     </tr>
     </thead>
 
@@ -33,12 +71,18 @@
             <td><?php echo htmlentities($book->author); ?></td>
             <td><?php echo htmlentities($book->publisher); ?></td>
             <td><?php echo htmlentities($book->pages); ?></td>
-            <td><a href="index.php?op=edit&id=<?php echo $book->id; ?>">edit</a></td>
-            <td><a href="index.php?op=delete&id=<?php echo $book->id; ?>"
-                   onclick="return confirm('Are you sure you want to delete?');">delete</a></td>
+            <td>
+                <a href="index.php?op=edit&id=<?php echo $book->id; ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                &nbsp;&nbsp;
+                <a href="index.php?op=delete&id=<?php echo $book->id; ?>"
+                   onclick="return confirm('Are you sure you want to delete?');"><i class="fa-solid fa-trash"></i></a>
+            </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
+<footer>
+    <p>Developer: Inma Quesada</p>
+</footer>
 </body>
 </html>
