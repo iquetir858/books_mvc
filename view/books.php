@@ -108,12 +108,12 @@
     <?php endif;
 
     ?>
-    | Page <a href="?page=<?= $currentPage ?>" ><?= $currentPage ?></a>
-    of <a href="?page=<?= $totalNumPages ?>" ><?= $totalNumPages ?></a> |
+    | Page <?= $currentPage ?> of <?= $totalNumPages ?> |
     <?php
 
     if ($currentPage < $totalNumPages): ?>
         <a href="?page=<?= $currentPage + 1 ?>">Next &rarr;</a>
+        <a href="?page=<?= $totalNumPages ?>">| Last &raquo;</a>
     <?php endif; ?>
 </div>
 
