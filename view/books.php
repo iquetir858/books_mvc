@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7b7111c316.js" crossorigin="anonymous"></script>
     <style>
-        *{
+        * {
             box-sizing: border-box;
         }
+
         body {
             background-color: azure;
             text-align: center;
@@ -34,7 +35,23 @@
             border: 2px solid darkblue;
         }
 
-        footer {
+        a:hover, a:visited:hover {
+            color: deeppink;
+        }
+
+        a:visited {
+            color: purple;
+        }
+
+        #newBook {
+            margin: 20px;
+        }
+
+        #pagination {
+            margin: 10px 10px 20px 10px;
+        }
+
+        header, footer {
             margin: 0;
             padding: 0;
             width: 100%;
@@ -46,7 +63,7 @@
 </head>
 <body>
 <header><h1>BOOKS MVC</h1></header>
-<div><a href="index.php?op=new">Add new book</a></div>
+<div id="newBook"><a href="index.php?op=new">Add new book</a></div>
 <br>
 <table class="books" border="0" cellpadding="0" cellspacing="0">
     <thead>
@@ -81,6 +98,25 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+<div id="pagination">
+    <?php
+    $currentPage = (!isset($_GET['page']) || $_GET['page'] < 1) ? 1 : (int)$_GET['page']; //Página por la que vamos (actual)
+
+    if ($currentPage > 1): ?>
+        <a href="?page=1">&laquo; First |</a>
+        <a href="?page=<?= $currentPage - 1 ?>">&larr; Previous</a>
+    <?php endif;
+
+    ?>
+    | Page <a href="?page=<?= $currentPage ?>" ><?= $currentPage ?></a>
+    of <a href="?page=<?= $totalNumPages ?>" ><?= $totalNumPages ?></a> |
+    <?php
+
+    if ($currentPage < $totalNumPages): ?>
+        <a href="?page=<?= $currentPage + 1 ?>">Next &rarr;</a>
+    <?php endif; ?>
+</div>
+
 <footer>
     <p>Developer: Inma Quesada</p>
 </footer>

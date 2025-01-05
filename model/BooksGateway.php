@@ -5,12 +5,12 @@ require_once 'Database.php';
 //(mostrar todods, mostrar por id, insertar, editar y borrar
 class BooksGateway extends Database
 {
-
     //Realiza un listado de los libros y lo muestra en orden ascendente
-    public function selectAll($order)
+    //------VERSIÓN 1- Muestra los libros (los que haya)
+    /*public function selectAll($order)
     {
         if (!isset($order)) {
-            $order = 'title';
+            $order = 'id';
         }
         $pdo = Database::connect();
         $sql = $pdo->prepare("SELECT * FROM books ORDER BY $order ASC");
@@ -22,10 +22,43 @@ class BooksGateway extends Database
             $books[] = $obj;
         }
         return $books;
+    }*/
+
+    //-------VERSIÓN 2 -  Sólo muestra x según la página en la que esté
+    public function selectAll($order)
+    {
+        if (!isset($order)) {
+            $order = 'id';
+        }
+        $pdo = Database::connect();
+        $booksPerPage = 10; //Nºlibros por página
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Página por la que vamos (actual)
+        if ($currentPage < 1) $currentPage = 1;
+        $initRange = ($currentPage - 1) * $booksPerPage; //Índice dentro de la base de datos
+
+        //Obtenemos los libros dentro de ese rango
+        $sql = $pdo->query("SELECT * FROM books LIMIT $initRange, $booksPerPage");
+        $sql->execute();
+        $books = array();
+        while ($obj = $sql->fetch(PDO::FETCH_OBJ)) {
+            $books[] = $obj;
+        }
+        return $books;
+    }
+
+    public function getTotalNumPages()
+    {
+        $pdo = Database::connect();
+        $booksPerPage = 10; //Nºlibros por página
+
+        //Calculamos el nºtotal de páginas según los libros almacenados
+        $numBooks = $pdo->query("SELECT COUNT(*) AS total FROM books");
+        $total = $numBooks->fetch(PDO::FETCH_ASSOC)['total'];
+        return ceil($total / $booksPerPage);
     }
 
     //función que devuelve sólo un contacto (cambiarlo a libro)
-    //El id vendrá de un get (cambiarlo a post) que se le pasa al 'getContact(id)' de BooksService.php
+    //El id vendrá de un get que se le pasa al 'getContact(id)' de BooksService.php
     //desde el BooksController.php
     public function selectById($id)
     {
@@ -62,4 +95,5 @@ class BooksGateway extends Database
         $sql->execute(array($id));
     }
 }
+
 ?>

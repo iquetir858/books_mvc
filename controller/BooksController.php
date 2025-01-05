@@ -48,6 +48,7 @@ class BooksController
     {
         $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
         $books = $this->booksService->getAllBooks($orderby);
+        $totalNumPages= $this->booksService->getTotalNumPages();
         include ROOT_PATH . '/view/books.php';
 
     }
