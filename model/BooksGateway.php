@@ -102,20 +102,20 @@ class BooksGateway extends Database
         $pdf = new PDF();
         $pdf->AddPage();
         // Tabla libros seleccionados
-        $pdf->AddCol('isbn', 40, 'ISBN', 'C');
-        $pdf->AddCol('title', 40, 'Title', 'C');
-        $pdf->AddCol('author', 40, 'Author', 'C');
-        $pdf->AddCol('publisher', 40, 'Publisher', 'C');
-        $pdf->AddCol('pages', 40, 'Pages', 'C');
+        $pdf->AddCol('isbn', 30, 'ISBN', 'C');
+        $pdf->AddCol('title', 55, 'Title', 'C');
+        $pdf->AddCol('author', 35, 'Author', 'C');
+        $pdf->AddCol('publisher', 50, 'Publisher', 'C');
+        $pdf->AddCol('pages', 15, 'Pages', 'C');
 
         //COLORES DE LA ÚLTIMA TABLA
         $prop = array(
-            'HeaderColor' => array(164, 233, 41),
-            'color1' => array(247, 255, 232),
-            'color2' => array(233, 255, 193),
+            'HeaderColor' => array(255, 132, 108),
+            'color1' => array(249, 206, 198),
+            'color2' => array(248, 230, 227),
             'padding' => 2
         );
-        $init = $page * 10;
+        $init = ($page - 1) * 10;
         //LIMIT $init, $nbooks --> a partir del primer elemento de esa página (en cada pag hay 10), coge el numLibros indicados
         $pdf->Table($pdo, "SELECT * FROM books ORDER BY $orderby ASC LIMIT $init,$nbooks", $prop);
         $pdf->Output();

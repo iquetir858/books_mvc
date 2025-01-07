@@ -40,7 +40,7 @@ class PDF_MySQL_Table extends FPDF
             $this->SetFillColor($this->RowColors[$ci][0], $this->RowColors[$ci][1], $this->RowColors[$ci][2]);
         foreach ($this->aCols as $col) {
             $utf8Text = mb_convert_encoding($data[$col['f']], 'ISO-8859-1', 'UTF-8');
-            $this->Cell($col['w'], 5, $utf8Text, 1, 0, $col['a'], $fill);
+            $this->Cell($col['w'], 10, $utf8Text, 1, 0, $col['a'], $fill);
         }
         $this->Ln();
         $this->ColorIndex = 1 - $ci;
@@ -131,7 +131,7 @@ class PDF_MySQL_Table extends FPDF
         // Print header
         $this->TableHeader();
         // Print rows
-        $this->SetFont('Arial', '', 11);
+        $this->SetFont('Arial', '', 9);
         $this->ColorIndex = 0;
         $this->ProcessingTable = true;
 

@@ -18,7 +18,7 @@
         body {
             background-color: #fff8f8;
             text-align: center;
-            min-height: 150vh;
+            min-height: 130vh;
             margin: 0;
             /*Elimina los espacios del footer*/
         }

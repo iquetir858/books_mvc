@@ -149,9 +149,9 @@ class BooksController
 
     public function showPDF()
     {
-        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
-        $page = isset($_GET['page']) ? $_GET['page'] : '1';
-        $nbooks = isset($_GET['nbooks']) ? $_GET['nbooks'] : '1';
+        $orderby = isset($_GET['orderby']) && !empty($_GET['orderby']) ? $_GET['orderby'] : 'id';
+        $page = isset($_GET['page']) && !empty($_GET['page']) ? $_GET['page'] : '1';
+        $nbooks = isset($_GET['nbooks']) && !empty($_GET['nbooks']) ? $_GET['nbooks'] : '1';
         $this->booksService->showPDF($orderby, $page, $nbooks);
     }
 
