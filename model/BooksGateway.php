@@ -37,7 +37,7 @@ class BooksGateway extends Database
         $initRange = ($currentPage - 1) * $booksPerPage; //Índice dentro de la base de datos
 
         //Obtenemos los libros dentro de ese rango
-        $sql = $pdo->query("SELECT * FROM books LIMIT $initRange, $booksPerPage");
+        $sql = $pdo->query("SELECT * FROM books  order by $order LIMIT $initRange, $booksPerPage");
         $sql->execute();
         $books = array();
         while ($obj = $sql->fetch(PDO::FETCH_OBJ)) {
