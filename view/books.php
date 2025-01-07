@@ -27,8 +27,8 @@
         <div id="newBook"><a href="index.php?op=new"><i class="fa-solid fa-circle-plus"></i> Add new book</a></div>
         <div id="pdf">
             <form method="GET">
-                <input type="text" name="page" value="<?php echo $currentPage ?>" hidden> 
-                <input type="text" name="orderby" value="<?php echo $order ?>" hidden> 
+                <input type="text" name="page" value="<?php echo $currentPage ?>" hidden>
+                <input type="text" name="orderby" value="<?php echo $order ?>" hidden>
                 <input type="number" placeholder="Number of books" name="nbooks" min="1">
                 <input id="inputSubmit" type="submit" name="op" value="Generate PDF">
             </form>
