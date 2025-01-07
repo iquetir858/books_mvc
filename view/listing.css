@@ -1,0 +1,62 @@
+table {
+    width: 80%;
+    margin: auto;
+    border: 2px solid #5e1717;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+    border: 2px solid #5e1717;
+}
+
+a {
+    color: #5e1717;
+}
+
+a:hover,
+a:visited:hover {
+    color: darkgoldenrod;
+}
+
+a:visited {
+    color: #5e1717;
+}
+
+#operations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#pdf input {
+    border: 1px solid #5e1717;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 150px;
+}
+
+#pdf #inputSubmit {
+    font-weight: bold;
+    color: #5e1717;
+    background-color: gold;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#pdf #inputSubmit:hover {
+    color: gold;
+    background-color: #5e1717;
+}
+
+#newBook {
+    margin: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#pagination {
+    margin: 10px 10px 20px 10px;
+}

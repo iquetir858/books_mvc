@@ -4,108 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Info Books</title>
-    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7b7111c316.js" crossorigin="anonymous"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Roboto;
-        }
-
-        body {
-            background-color: #fff8f8;
-            text-align: center;
-            min-height: 130vh;
-            margin: 0;
-            /*Elimina los espacios del footer*/
-        }
-
-        table {
-            width: 80%;
-            margin: auto;
-            border: 2px solid #5e1717;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 5px;
-            border: 2px solid #5e1717;
-        }
-
-        a {
-            color: #5e1717;
-        }
-
-        a:hover,
-        a:visited:hover {
-            color: darkgoldenrod;
-        }
-
-        a:visited {
-            color: #5e1717;
-        }
-
-        #operations {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        #pdf input {
-            border: 1px solid #5e1717;
-            border-radius: 5px;
-            font-size: 16px;
-            width: 150px;
-        }
-
-        #pdf #inputSubmit {
-            font-weight: bold;
-            color: #5e1717;
-            background-color: gold;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        #pdf #inputSubmit:hover {
-            color: gold;
-            background-color: #5e1717;
-        }
-
-        #newBook {
-            margin: 20px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        #pagination {
-            margin: 10px 10px 20px 10px;
-        }
-
-        header,
-        footer {
-            margin: 0;
-            width: 100%;
-            background-color: #5e1717;
-            font-size: 20px;
-            color: #fff8f8;
-        }
-
-        header {
-            position: relative;
-            top: 0;
-            padding: 5px 0px 5px 0px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="view/general.css">
+    <link rel="stylesheet" type="text/css" href="view/listing.css">
 </head>
 
 <body>

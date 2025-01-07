@@ -1,0 +1,32 @@
+form {
+    margin-top: 40px;
+}
+
+button,
+input[type="submit"] {
+    font-weight: bold;
+    color: #5e1717;
+    background-color: gold;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    color: gold;
+    background-color: #5e1717;
+}
+
+label{
+    text-align: left;
+}
+
+input[type="text"],
+textarea {
+    width: 300px;
+    margin: 10px;
+}
+
+textarea{
+    resize: none;
+}

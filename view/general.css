@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body {
+    background-color: #fff8f8;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    /*Elimina los espacios del footer*/
+}
+
+header,
+footer {
+    margin: 0;
+    width: 100%;
+    background-color: #5e1717;
+    font-size: 20px;
+    color: #fff8f8;
+}
+
+header {
+    position: relative;
+    top: 0;
+    padding: 5px 0px 5px 0px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
