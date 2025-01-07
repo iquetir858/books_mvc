@@ -33,6 +33,8 @@ class BooksController
                 $this->deleteBook();
             } elseif ($op == 'show') {
                 $this->showBook();
+            } elseif ($op == "Generate PDF") {
+                $this->showPDF();
             } else {
                 $this->showError("Page not found", "Page for operation " . $op . " was not found!");
             }
@@ -48,7 +50,7 @@ class BooksController
     {
         $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
         $books = $this->booksService->getAllBooks($orderby);
-        $totalNumPages= $this->booksService->getTotalNumPages();
+        $totalNumPages = $this->booksService->getTotalNumPages();
         include ROOT_PATH . '/view/books.php';
 
     }
@@ -143,6 +145,14 @@ class BooksController
         $book = $this->booksService->getBook($id);
 
         include ROOT_PATH . '/view/book.php';
+    }
+
+    public function showPDF()
+    {
+        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
+        $page = isset($_GET['page']) ? $_GET['page'] : '1';
+        $nbooks = isset($_GET['nbooks']) ? $_GET['nbooks'] : '1';
+        $this->booksService->showPDF($orderby, $page, $nbooks);
     }
 
     public function showError($title, $message)

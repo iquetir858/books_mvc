@@ -1,5 +1,6 @@
 <?php
 require_once 'Database.php';
+require_once 'pdfBooks.php'; //Para la creación del pdf
 
 //Clase que, tras conectarse a la base de datos, realiza todas las funciones del CRUD
 //(mostrar todods, mostrar por id, insertar, editar y borrar
@@ -32,8 +33,9 @@ class BooksGateway extends Database
         }
         $pdo = Database::connect();
         $booksPerPage = 10; //Nºlibros por página
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Página por la que vamos (actual)
-        if ($currentPage < 1) $currentPage = 1;
+        $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1; //Página por la que vamos (actual)
+        if ($currentPage < 1)
+            $currentPage = 1;
         $initRange = ($currentPage - 1) * $booksPerPage; //Índice dentro de la base de datos
 
         //Obtenemos los libros dentro de ese rango
@@ -57,9 +59,7 @@ class BooksGateway extends Database
         return ceil($total / $booksPerPage);
     }
 
-    //función que devuelve sólo un contacto (cambiarlo a libro)
-    //El id vendrá de un get que se le pasa al 'getContact(id)' de BooksService.php
-    //desde el BooksController.php
+    //función que devuelve sólo un libro
     public function selectById($id)
     {
         $pdo = Database::connect();
@@ -71,7 +71,7 @@ class BooksGateway extends Database
         return $result;
     }
 
-    //Inserta un nuevo contacto en la tabla
+    //Inserta un nuevo libro en la tabla
     public function insert($isbn, $title, $author, $publisher, $pages)
     {
         $pdo = Database::connect();
@@ -79,7 +79,7 @@ class BooksGateway extends Database
         $result = $sql->execute(array($isbn, $title, $author, $publisher, $pages));
     }
 
-    //Edita un contacto
+    //Edita un libro
     public function edit($isbn, $title, $author, $publisher, $pages, $id)
     {
         $pdo = Database::connect();
@@ -87,13 +87,38 @@ class BooksGateway extends Database
         $result = $sql->execute(array($isbn, $title, $author, $publisher, $pages, $id));
     }
 
-    //Borra un contacto según un id
+    //Borra un libro según un id
     public function delete($id)
     {
         $pdo = Database::connect();
         $sql = $pdo->prepare("DELETE FROM books WHERE id = ?");
         $sql->execute(array($id));
     }
-}
 
+    public function showPDF($orderby, $page, $nbooks)
+    {
+        $pdo = Database::connect();
+
+        $pdf = new PDF();
+        $pdf->AddPage();
+        // Tabla libros seleccionados
+        $pdf->AddCol('isbn', 40, 'ISBN', 'C');
+        $pdf->AddCol('title', 40, 'Title', 'C');
+        $pdf->AddCol('author', 40, 'Author', 'C');
+        $pdf->AddCol('publisher', 40, 'Publisher', 'C');
+        $pdf->AddCol('pages', 40, 'Pages', 'C');
+
+        //COLORES DE LA ÚLTIMA TABLA
+        $prop = array(
+            'HeaderColor' => array(164, 233, 41),
+            'color1' => array(247, 255, 232),
+            'color2' => array(233, 255, 193),
+            'padding' => 2
+        );
+        $init = $page * 10;
+        //LIMIT $init, $nbooks --> a partir del primer elemento de esa página (en cada pag hay 10), coge el numLibros indicados
+        $pdf->Table($pdo, "SELECT * FROM books ORDER BY $orderby ASC LIMIT $init,$nbooks", $prop);
+        $pdf->Output();
+    }
+}
 ?>

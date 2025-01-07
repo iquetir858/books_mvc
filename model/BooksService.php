@@ -91,6 +91,7 @@ class BooksService extends BooksGateway
         }
     }
 
+    //Función que edita la información de un libro concreto
     public function editBook($isbn, $title, $author, $publisher, $pages, $id)
     {
         try {
@@ -103,11 +104,24 @@ class BooksService extends BooksGateway
         }
     }
 
+    //Función que borra un libro según su id
     public function deleteBook($id)
     {
         try {
             self::connect();
             $result = $this->booksGateway->delete($id);
+            self::disconnect();
+        } catch (Exception $e) {
+            self::disconnect();
+            throw $e;
+        }
+    }
+
+    public function showPDF($orderby, $page, $nbooks)
+    {
+        try {
+            self::connect();
+            $this->booksGateway->showPDF($orderby, $page, $nbooks);
             self::disconnect();
         } catch (Exception $e) {
             self::disconnect();

@@ -63,7 +63,7 @@
             width: 150px;
         }
 
-        #pdf button {
+        #pdf #inputSubmit {
             font-weight: bold;
             color: #5e1717;
             background-color: gold;
@@ -71,7 +71,7 @@
             font-size: 16px;
         }
 
-        #pdf button:hover {
+        #pdf #inputSubmit:hover {
             color: gold;
             background-color: #5e1717;
         }
@@ -112,19 +112,25 @@
     <header>
         <h1>BOOKS MVC</h1>
     </header>
-    <div id="operations">
-        <div id="newBook"><a href="index.php?op=new"><i class="fa-solid fa-circle-plus"></i> Add new book</a></div>
-        <div id="pdf">
-            <input type="number" placeholder="Number of books" name="nbooks" min="1">
-            <button>Generate PDF</button>
-        </div>
-    </div>
-    <br>
+
     <?php
     //Obtenemos la página actual aquí para el orden 
     $currentPage = (!isset($_GET['page']) || $_GET['page'] < 1) ? 1 : (int) $_GET['page']; //Página por la que vamos (actual)
     $order = isset($_GET['orderby']) ? $_GET['orderby'] : 'id';
     ?>
+
+    <div id="operations">
+        <div id="newBook"><a href="index.php?op=new"><i class="fa-solid fa-circle-plus"></i> Add new book</a></div>
+        <div id="pdf">
+            <form method="GET">
+                <input type="text" name="page" value="<?php echo $currentPage ?>" hidden> 
+                <input type="text" name="orderby" value="<?php echo $order ?>" hidden> 
+                <input type="number" placeholder="Number of books" name="nbooks" min="1">
+                <input id="inputSubmit" type="submit" name="op" value="Generate PDF">
+            </form>
+        </div>
+    </div>
+    <br>
 
     <table class="books" border="0" cellpadding="0" cellspacing="0">
         <thead>
@@ -164,8 +170,8 @@
     <div id="pagination">
         <?php
         if ($currentPage > 1): ?>
-            <a href="?orderby=<?php echo $order?>&page=1">&laquo; First |</a>
-            <a href="?orderby=<?php echo $order?>&page=<?= $currentPage - 1 ?>">&larr; Previous</a>
+            <a href="?orderby=<?php echo $order ?>&page=1">&laquo; First |</a>
+            <a href="?orderby=<?php echo $order ?>&page=<?= $currentPage - 1 ?>">&larr; Previous</a>
         <?php endif;
 
         ?>
@@ -173,8 +179,8 @@
         <?php
 
         if ($currentPage < $totalNumPages): ?>
-            <a href="?orderby=<?php echo $order?>&page=<?= $currentPage + 1 ?>">Next &rarr;</a>
-            <a href="?orderby=<?php echo $order?>&page=<?= $totalNumPages ?>">| Last &raquo;</a>
+            <a href="?orderby=<?php echo $order ?>&page=<?= $currentPage + 1 ?>">Next &rarr;</a>
+            <a href="?orderby=<?php echo $order ?>&page=<?= $totalNumPages ?>">| Last &raquo;</a>
         <?php endif; ?>
     </div>
 
