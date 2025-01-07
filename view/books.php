@@ -11,40 +11,70 @@
     <style>
         * {
             box-sizing: border-box;
+            font-family: Roboto;
         }
 
         body {
-            background-color: azure;
+            background-color: #fff8f8;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 100vh;
+            min-height: 150vh;
             margin: 0; /*Elimina los espacios del footer*/
         }
 
         table {
             width: 80%;
-            margin: 20px auto;
-            border: 2px solid darkblue;
+            margin: auto;
+            border: 2px solid #5e1717;
             border-collapse: collapse;
         }
 
         th, td {
             padding: 5px;
-            border: 2px solid darkblue;
+            border: 2px solid #5e1717;
+        }
+
+        a {
+            color: #5e1717;
         }
 
         a:hover, a:visited:hover {
-            color: deeppink;
+            color: darkgoldenrod;
         }
 
         a:visited {
-            color: purple;
+            color: #5e1717;
+        }
+
+        #operations {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #pdf input {
+            border: 1px solid #5e1717;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 150px;
+        }
+
+        #pdf button {
+            font-weight: bold;
+            color: #5e1717;
+            background-color: gold;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #pdf button:hover{
+            color: gold;
+            background-color: #5e1717;
         }
 
         #newBook {
             margin: 20px;
+            font-size: 16px;
+            font-weight: bold;
         }
 
         #pagination {
@@ -53,17 +83,33 @@
 
         header, footer {
             margin: 0;
-            padding: 0;
             width: 100%;
-            background-color: darkblue;
+            background-color: #5e1717;
             font-size: 20px;
-            color: azure;
+            color: #fff8f8;
+        }
+
+        header {
+            position: relative;
+            top: 0;
+            padding: 5px 0px 5px 0px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
 <header><h1>BOOKS MVC</h1></header>
-<div id="newBook"><a href="index.php?op=new">Add new book</a></div>
+<div id="operations">
+    <div id="newBook"><a href="index.php?op=new"><i class="fa-solid fa-circle-plus"></i> Add new book</a></div>
+    <div id="pdf">
+        <input type="number" placeholder="Number of books" name="nbooks" min="1">
+        <button>Generate PDF</button>
+    </div>
+</div>
 <br>
 <table class="books" border="0" cellpadding="0" cellspacing="0">
     <thead>
